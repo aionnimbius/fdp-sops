@@ -1,0 +1,63 @@
+Objective
+This document provides step-by-step instructions to install and configure Jenkins on an Amazon Linux instance.
+
+Step 1: Install Java 17 (Amazon Corretto)
+Jenkins requires Java to run. Install Amazon Corretto 17 using the following command:
+sudo dnf install -y java-17-amazon-corretto
+
+Verify the Java installation:
+java --version
+
+
+Step 2: Add Jenkins Repository and Import GPG Key
+Download and add the Jenkins repository:
+sudo wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat-stable/jenkins.repo
+
+Import the GPG key:
+sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io-2023.key
+
+Step 3: Update the System
+Upgrade all installed packages to ensure system stability:
+sudo dnf upgrade -y
+
+Step 4: Install Jenkins
+Install Jenkins using the following command:
+
+sudo dnf install -y jenkins
+
+Reload systemd daemon to recognize the Jenkins service:
+sudo systemctl daemon-reload
+
+Step 5: Enable and Start Jenkins
+Enable Jenkins to start at boot:
+sudo systemctl enable jenkins
+Start the Jenkins service:
+sudo systemctl start jenkins
+Check the status of Jenkins:
+sudo systemctl status jenkins
+
+Step 6: Verify Jenkins Installation
+
+1. Open a web browser and navigate to:
+   
+   http://<your-server-ip>:8080
+   
+2. Retrieve the initial admin password:
+   
+   sudo cat /var/lib/jenkins/secrets/initialAdminPassword
+   
+3. Follow the on-screen instructions to complete the Jenkins setup.
+
+ Troubleshooting
+- If Jenkins fails to start, check logs:
+  
+  sudo journalctl -xeu jenkins.service
+  sudo cat /var/log/jenkins/jenkins.log
+  
+- Ensure port 8080 is not in use:
+  
+  sudo netstat -tulnp | grep 8080
+  
+- Check Java version:
+  
+  java --version
