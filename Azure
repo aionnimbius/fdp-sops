@@ -1,0 +1,90 @@
+# Creating Your First Azure Virtual Machine
+
+## Prerequisites
+1. An active Azure account and subscription
+2. Access to the Azure portal (portal.azure.com)
+3. A web browser
+4. Basic understanding of operating system preferences (Windows/Linux)
+
+## Detailed Steps
+
+### Step 1: Access Azure Portal
+1. Go to portal.azure.com
+2. Sign in with your Azure account credentials
+
+### Step 2: Create a New Virtual Machine
+1. Click on "Create a resource" in the upper left corner
+2. Select "Compute" > "Virtual Machine"
+3. Click "Create"
+
+### Step 3: Configure Basic Settings
+1. Select your subscription from the dropdown
+2. Create a new Resource Group or select existing one
+3. Enter a VM name (must be unique within the resource group)
+4. Choose your region (select the closest to your location)
+5. Select availability options (can use default for first VM)
+6. Choose your operating system:
+   - For Windows Server, select a Windows Server version
+   - For Linux, choose distributions like Ubuntu, CentOS, or RHEL
+7. Select your VM size:
+   - Start with B-series for testing (e.g., B2s)
+   - Or D-series for production workloads
+
+### Step 4: Set Authentication
+For Windows:
+1. Create username
+2. Create strong password (must meet complexity requirements)
+
+For Linux:
+1. Choose between SSH public key or password
+2. If using password, create username and strong password
+3. If using SSH, provide your public key
+
+### Step 5: Configure Networking
+1. Create new Virtual Network (VNet) or select existing
+2. Subnet will be created automatically if creating new VNet
+3. Select Public IP (create new one)
+4. Keep default Network Security Group (NSG) with basic rules
+5. Enable basic DDoS protection
+
+### Step 6: Management Settings
+1. Enable boot diagnostics
+2. Choose managed disks for OS disk type
+3. Leave other settings as default for first VM
+
+### Step 7: Review and Create
+1. Click "Review + create"
+2. Wait for validation to pass
+3. Review all settings
+4. Click "Create"
+5. Wait for deployment (usually 5-10 minutes)
+
+### Step 8: Connect to Your VM
+For Windows:
+1. Download RDP file from VM overview page
+2. Use Remote Desktop Connection
+3. Enter credentials you created
+
+For Linux:
+1. Use SSH command provided in portal
+2. Connect using terminal or SSH client
+3. Use your credentials or SSH key
+
+## Important Security Notes
+- Always use strong passwords
+- Keep your VM updated
+- Use Network Security Groups to control access
+- Enable Azure Security Center for security recommendations
+- Regular backup of important data
+
+## Cost Management Tips
+- Stop VM when not in use
+- Choose right size for your workload
+- Use Azure Cost Management to monitor spending
+- Consider reserved instances for long-term use
+
+## Next Steps
+1. Install your required software
+2. Configure backup
+3. Set up monitoring
+4. Implement additional security measures as needed
